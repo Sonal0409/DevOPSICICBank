@@ -145,6 +145,32 @@ Create a new file on external repo
 
 # git fetch origin master
 
+**********************
+
+# git clone https://github.com/Sonal0409/myfiles11feb.git
+
+***************
+
+Forking :
+
+Click on fork button in github
+
+************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
