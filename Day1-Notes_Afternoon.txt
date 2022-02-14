@@ -158,7 +158,57 @@ Click on fork button in github
 ************
 
 
+Fetch files from external repo to local repo
+******************************************************
+Create a new file on external repo 
 
+# git fetch origin master
+
+# git fetch origin master --filename
+
+**********************
+
+Branching in GIT
+
+***********
+
+# git branch
+
+# git branch branchname
+
+Switch to the branch
+
+# git checkout branchname
+
+Create file on the new branch and add to LR
+
+git add .
+git commit -m "file on b1 branch"
+
+git log --oneline
+
+Merge one branch new commits to MASTER branch
+
+# git checkout destination branch
+
+# git merge sourcebranch destinationbranch
+
+# git checkout master
+
+# git merge b1 master
+
+**********************************
+
+Jenkins
+
+systemctl start jenkins
+
+port: 8080
+
+localhost:8080 on any browser
+
+username : admin
+password: admin
 
 
 
