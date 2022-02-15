@@ -1,0 +1,529 @@
+
+Notes : Day1 ==> Afternoon Batch
+
+*************************
+Scenario1: Create a Working Directory
+
+# mkdir gitDemo
+# cd gitDemo
+# mkdir project
+# cd project
+- Working directory is ready
+
+Initiating a Local repository in working directory
+
+# git init
+# ll -al
+
+Local repository intiated in project working directory. Now all files in working directory will be tracked by git.
+
+****************************
+Scenario 2: Creating a new file and adding it to local repository
+
+git config --global user.name username(github)
+
+git config --global user.email emailid
+
+# vim file1
+# git status  // file is not tracked by git
+# git add file1
+# git status   // file is in stagging area and not commited yet
+# git commit -m "commit file1"
+# ls
+# git ls-files   // file is now being tracked by GIT
+
+Again one more example:
+
+# vim file2
+# git status  // file is not tracked by git
+# git add file2
+# git status   // file is in stagging area and not commited yet
+# git commit -m "commit file2"
+# ls
+# git ls-files   // file is now being tracked by GIT
+***************************
+****************************************************
+Scanrio 3: Check commit history or log
+
+# git log  // will show the commit history in detail
+# git log --oneline 
+# git show commitid   // will show chnages happened in this commit
+
+*****************************************************
+Scenario4: COMMIT and ADD an Existing file
+
+# vim file2   // open exisiting file and make chnages to it
+# git status   // file is being tracked only chnages have to be commited
+# git add file2
+# git commit -m "modified file2"
+*******************************************************
+Scenario 5: Checking Unstagged chnages and stagged changes 
+
+# vim file2   // open exisiting file and make chnages to it
+# git diff file2   // will show chnages that are made to file2 when it is not stagged yet
+# git add file2  // stage the file
+# git diff --staged file2 // will show chnages that are made to file2 when file is in stagging area
+# git commit -m "new chnages"
+
+********************************************************
+Scenario6: Deletion of file
+
+- Deletion of file from WD & local repo
+
+# git rm file1
+# git status
+# git commit -m "deletion of file1"
+# ls
+# git ls-files
+***********************************************************
+
+Scenario7: Ignoring Files
+
+# vim log
+# git status  // file untracked
+# vim .gitignore   // add name of file "log" , which wil be noe ignored
+# git status   // log will be ignored and .gitignore untracked
+# git add .gitignore
+# git commit -m "added ignore file"
+# git status // working tress has to be clean
+
+************************************************************
+Scenario 8: Reverting the changes:
+
+# vim file3  // create a new files
+# git add file3
+# git commit -m "added file3"
+
+//Delete the file
+
+# git rm file3
+# git commit -m "deleted file3"
+# ls
+# git ls-files
+
+# git log --oneline    // last commit id is of delete action, copy it
+// lets revert the commit
+
+# git revert commit id
+
+// file back to WD and local
+# ls
+# git ls-files
+
+***********************************
+REMOTE REPOSITORY:
+
+Create login and password of GITHUB
+
+Create a new repository on the git hub
+
+Copy the URL of the repository to  add local repo to external repo:
+
+# git remote add origin URL of externalrepo
+
+# git remote -v // will show that origin is mapped to external repo url
+
+PUSH files of master into external repo
+# git branch ==> checkout on master branch
+# git push origin master ==> pushes master files to origin(external repo)
+Username: 
+Passowrd: 
+For password create Personal Access token in GITHUB
+//Now go to external repo and see all the files of master will be available
+
+***************************
+PULL files from external repo to local repo
+***************************************************
+Create files from github and pull the file into local repo
+
+# git pull origin 
+# ls ==> new file will be there
+
+Fetch files from external repo to local repo
+******************************************************
+Create a new file on external repo 
+
+# git fetch origin master
+
+**********************
+
+# git clone https://github.com/Sonal0409/myfiles11feb.git
+
+***************
+
+Forking :
+
+Click on fork button in github
+
+************
+
+
+Fetch files from external repo to local repo
+******************************************************
+Create a new file on external repo 
+
+# git fetch origin master
+
+# git fetch origin master --filename
+
+**********************
+
+Branching in GIT
+
+***********
+
+# git branch
+
+# git branch branchname
+
+Switch to the branch
+
+# git checkout branchname
+
+Create file on the new branch and add to LR
+
+git add .
+git commit -m "file on b1 branch"
+
+git log --oneline
+
+Merge one branch new commits to MASTER branch
+
+# git checkout destination branch
+
+# git merge sourcebranch destinationbranch
+
+# git checkout master
+
+# git merge b1 master
+
+**********************************
+
+Jenkins
+
+systemctl start jenkins
+
+port: 8080
+
+localhost:8080 on any browser
+
+username : admin
+password: admin
+
+****************
+Creation of a Job:
+************************************
+
+#1 Jenkins --> New Item --> Job1 --> Build --> shell comand---> echo 'this is my first job'
+
+Save --> click on Build Now  --> click on build number --> click on Console to see output
+
+#2 Jenkins --> New Item --> Job2 --> Build --> shell comand---> 
+date >> /tmp/date.txt
+echo 'this is my second job'
+
+Save --> click on Build Now  --> click on build number --> click on Console to see output
+
+***********************************
+***********************
+
+EMAIL NOTIFICATION
+
+*********************
+
+--> Manage Jenkins--> Extended Email Notifications
+Give:
+
+Smtp server ==> smtp.gmail.com
+port : 465
+
+Click on advance 
+SMTPUsername: 
+Password:  -->  --> click on chnage password to enter yur password.
+
+Check SSL checkbox
+
+Save the chnages
+
+Now go back to Jenkins-->  Job1 --> configure--> post build actions-->edit email notification-->
+
+ ---> recipient list as ==> batch123@....
+--> scroll down select Attach build log
+--> Click on ADVANCE
+--> scroll down to TRIGGER
+--> Remove Failures
+--> Click on Add trigger button below and select Always 
+---> select recipents list and remove developers.
+
+Save and build now on Job.
+
+Email will be sent with log
+
+*****************************************
+TRIGGERS
+
+TRIGGERS
+
+If we want to automatically trigger a Job
+
+Build triggers for any job:
+
+1. Trigger builds remotely (e.g., from scripts)
+
+Select the above very first option
+give Authentication token as : token1 
+any unique token number
+
+And then copy the path provided below in this format:
+JENKINS_URL/job/job4/build?token=TOKEN_NAME 
+
+
+update the above url in this way:
+Jenkins_URL: Curent url :http://3.140.252.165:8080
+Token_NAME: token number/name provided above
+
+Take this path and execute on anyother browser.
+
+http://3.140.252.165:8080//job/job4/build?token=token1
+
+Login as admin admin
+you can run that job.
+
+2. GitHub hook trigger for GITScm polling
+
+> Select the above option
+
+Save the job and now go to git hub
+
+Always save the job and then only  go to git hub, perform these steps
+
+go to the repository setting
+select webhooks on left side
+delete if any exisitng webhook
+
+click on createwebhook on right side
+
+provide following information:
+
+Payload URL : jenkinsurl/github-webhook/ ===> http://3.140.252.165:8080/github-webhook/
+
+Content type : select application/json
+
+Secret: no need of any value
+
+Which events would you like to trigger this webhook?
+
+select first option -- Just the push event.
+
+Select Active
+click on add webhook.
+
+now make some changes in repo,
+go to jenkins--> you will see a new build has been created
+
+3. Trigger prieodically
+
+Create anew Job--> build trigger--> build preodically --> give */2 * * * * --> Save and build now
+All build will be genrated automatically every 2 mins
+
+4. Trigger by POLL SCM
+
+Create a new Job-->Source code management--> Add git path
+
+https://github.com/Sonal0409/GITHUBJENKINSDEMO
+
+Build Triggers--> Poll SCM --> * * * * *
+
+Build will be generated each time there is a chnage in the repository only.
+
+*********************************
+
+
+
+*********************
+
+If we want to automatically trigger a Job
+
+1. Trigger prieodically
+
+Create anew Job--> build trigger--> build preodically --> give */2 * * * * --> Save and build now
+All build will be genrated automatically every 2 mins
+
+2. Trigger by POLL SCM
+
+Create a new Job-->Source code management--> Add git path
+
+https://github.com/Sonal0409/GITHUBJENKINSDEMO
+
+Build Triggers--> Poll SCM --> * * * * *
+
+Build will be generated each time there is a chnage in the repository only.
+
+*********************************
+
+Delivery Pipeline in Jenkins
+
+*******************************
+
+Jenkins--> Manage Jenkins-->Global Tool configuration
+
+Go to JDK section
+In this give:
+1. Uncheck -- install automatically
+2. JDK name as myjava
+3. Go to server type 
+# echo $JAVA_HOME ==> will give java location
+JAVA_HOME =
+/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.265.b01-1.amzn2.0.1.x86_64
+
+Save it.
+
+Under GIT==> leave it same 
+
+Under maven ==> lets install it automatically
+Type mymaven and check the install automatically box.
+Save the changes
+
+
+****************************************
+
+CREATION OF COMPILE JOB
+***********************************
+
+1. new Job --complie-->freestyle project
+2. Source code management --> select git
+--->give git path ===> https://github.com/Sonal0409/DevOpsClassCodes.git
+
+3. build ==> select invoke top level maven targets
+   select maven version===> mymaven
+    goal ==> compile
+4. save ==> build now 
+So all the compiled files will be present at this location
+==> look for this line in console output at the end on jenkins
+Compiling 13 source files to /var/lib/jenkins/workspace/compile1/target/classes
+
+5. Go to workspace on the left side of jenkins Job compile
+In the folder go to ==> target folder==> go to classes/com/edurekademo
+==> click on edurekademo==> got to utilities==> all class files will be there which have recently been compiled.
+******************************
+2nd JOB ==>Code Review
+*********************
+
+Jenkins--> new item--> Name= code Review==> freestyle project
+==> source codemanagement==>select git==> 
+give git repo name https://github.com/Sonal0409/DevOpsClassCodes
+
+Step 2: build ==> invoke top level maven target==>
+ select maven version==>mymaven ==> goal = pmd:pmd
+
+save==> build now
+==> click on build number and see the console
+
+Goto Workspace on the left side of jenkins Job code review
+In the folder go to ==> target folder ==> you will find pmd.xml file.
+
+CONVERT FILE TO TREND REPORT
+*******************************
+ manage jenkins--> manage plugins--> available --> Search for pmd plugin--> install it.
+
+Now go to the job Code Review==> go to post build actions ==> select Publish PMD anaylsys report
+
+under PMD results==> give path of pmd.xml file ie:  target/pmd.xml
+
+Save the file and build now.
+
+After the build is successfull, you will see PMD Warnings
+
+So you will see 12 new warning have been generated on the code.
+Scroll down 
+Under package click on first one to check warnings.
+
+*********************************
+JOB3: Testing --Unit Test report
+********************************
+
+1. jenkins--> new item--> Name= unitTest==> freestyle project
+==> source codemanagement==>select git==> give git repo name https://github.com/Sonal0409/DevOpsClassCodes
+
+2. build ==> invoke top level maven target==> select maven version==>mymaven ==> goal = test
+
+3. Save and Build now.
+
+4. Check the workspace
+
+5. surefire-reports will be present
+
+But we cannot understand them easily. So lets generate understandable reports by using Junit reports option under post build actions
+
+6. Go back to job==> post build actions==> select junit test result job
+==> give target/surefire-reports/*.xml  ===>under test report xml
+This is path where xml files are there.
+Here *.xml is as we want to use all the xml files
+
+7. Save and build again
+
+Go to build number ===> on left side you will see Test Result 
+Click on it and you can see all pass and fail details of the tests
+
+**************************
+JOB4 : Metric check
+************************
+
+1. Go to jenkins--> new item--> Name= Metriccheck==> freestyle project
+==> source codemanagement==>select git==> give git repo name https://github.com/Sonal0409/DevOpsClassCodes
+
+2.  build ==> invoke top level maven target==> select mymaven
+    goal = cobertura:cobertura -Dcobertura.report.format=xml
+
+3.==> save==> build now
+==> click on build number and see the console
+
+4. go to Workspace ==> target/site/cobertura/coverage.xml  
+
+The xml file will be there, But we cannot understand them easily. So lets generate understandable reports by downloading cobertura plugin
+
+Go to manage jenkins--> manage plugins--> cobertura --> install it
+
+Go back to the job--> post build actions--> select publish cobertura coverage report
+Under cobertura xml pattern give ==> target/site/cobertura/coverage.xml   ==> you can take the path from below displayed text.
+
+Save and build again
+Click build number ==> on left side you will find Coverage Report==> click on it ==> we cna see the coverage report.
+
+**********************************
+Job5 Package Job
+***************************
+
+Go to jenkins--> new item--> Name= Package==> freestyle project
+==> source codemanagement==>select git==> give git repo name https://github.com/Sonal0409/DevOpsClassCodes
+ 
+build ==> invoke top level maven target==>mymaven
+
+ goal = package
+
+==> save==> build now
+==> click on build number and see the console
+
+==> go to workspace ==> target/addressbook.war
+
+
+**************
+Connecting all the 5 jobs so that each job can be triggered:
+*****************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
