@@ -1,5 +1,5 @@
 
-Notes : Day1 ==> Afternoon Batch
+Notes : Day1 
 
 *************************
 Scenario1: Create a Working Directory
@@ -138,6 +138,10 @@ Create files from github and pull the file into local repo
 
 # git pull origin 
 # ls ==> new file will be there
+
+*************************************
+Day 2: GIT, MAVEN JENKINS
+************************************
 
 Fetch files from external repo to local repo
 ******************************************************
