@@ -1,0 +1,103 @@
+
+
+To check images of docker host
+
+$ docker images
+
+to see running and stopped container
+
+$ docker ps -a
+
+to see a specific container
+
+$ docker ps -f name=containername
+
+To pull an image from docker hub
+
+$ docker pull imagename
+
+$ docker pull registryname/repo/imagename:tagname  ==> pull image from cutome registry
+
+Create a up and running container
+
+$ docker run --name n1 -d nginx
+
+
+Port mapping or port forwarding
+
+ $ docker run --name myweb -d -p 8282:80 httpd
+
+
+ $ docker run --name myweb -d -P httpd
+
+Docker VOlumes
+
+$ docker volume create myvol
+
+$ docker volume inspect myvol
+
+$ docker run -itd --name c1 -v myvol:/tmp centos
+
+
+Docker network
+*******
+
+
+$ docker network ls
+$ docker network create --driver bridge network1
+$ docker network create --driver bridge network2
+
+Docker Compose
+*****
+
+$ docker-compose up -d
+
+$ docker-compose down
+
+*****
+
+Dockerfile
+
+vim dockerfile
+
+FROM ubuntu
+RUN apt-get update -y
+RUN apt-get install nginx -y
+COPY index.html /var/www/html/
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+
+
+$ docker build -t mynginx .
+
+$ docker run -d --name n1 -p 8282:80 mynginx
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
